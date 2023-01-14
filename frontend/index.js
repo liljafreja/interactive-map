@@ -1,5 +1,4 @@
 const map = L.map('map').setView([51.505, -0.09], 13);
-
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -11,18 +10,22 @@ map.on('click', function(e) {
     let lng = popLocation.lng
     let calculationResult = httpGet(`http://127.0.0.1:5000/max_wave_height?longitude=${lng}&latitude=${lat}`)
     let parsedMetric = JSON.parse(calculationResult)
-    let maxWaveHeight = parsedMetric.maxWaveHeight
-    let message;
-    if (maxWaveHeight === 'nan') {
-        message = `<p>The wave height can not be calculated on land.</p>`
-    } else {
-        message = `<p>The max wave height is<br />${maxWaveHeight}</p>`
-    }
-    var popup = L.popup()
+    let message = getMessage(parsedMetric);
+    L.popup()
         .setLatLng(popLocation)
         .setContent(message)
         .openOn(map);
 });
+
+
+function getMessage(parsedMetric) {
+    let maxWaveHeight = parsedMetric.maxWaveHeight
+    if (maxWaveHeight === 'nan') {
+        return `<p>The max wave height can not be calculated for this point.</p>`
+    } else {
+        return `<p>The max wave height is<br />${maxWaveHeight}</p>`
+    }
+}
 
 function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
