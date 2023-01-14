@@ -18,4 +18,4 @@ def find_maximal_wave_height(longitude: float, latitude: float, data: xr.Dataset
 
 if __name__ == '__main__':
     with xr.open_dataset("data/waves_2019-01-01.nc") as ds:
-        print("The max wave height for the given coordinates is", find_maximal_wave_height(0, 0, ds), ".")
+        print("The max wave height for the given coordinates is", find_maximal_wave_height(0, 0, ds))
