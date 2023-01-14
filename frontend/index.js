@@ -4,8 +4,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-map.on('click', function(e) {
-    var popLocation= e.latlng;
+map.on('click', function (e) {
+    var popLocation = e.latlng;
     let lat = popLocation.lat
     let lng = popLocation.lng
     let calculationResult = httpGet(`http://127.0.0.1:5000/max_wave_height?longitude=${lng}&latitude=${lat}`)
@@ -29,7 +29,7 @@ function getMessage(parsedMetric) {
 
 function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
+    xmlHttp.open("GET", theUrl, false); // false for synchronous request
+    xmlHttp.send(null);
     return xmlHttp.responseText;
 }
