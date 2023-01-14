@@ -5,3 +5,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+map.on('click', function(e) {
+    var popLocation= e.latlng;
+    var popup = L.popup()
+        .setLatLng(popLocation)
+        .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+        .openOn(map);
+});
