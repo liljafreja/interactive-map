@@ -1,5 +1,6 @@
 # interactive-map
 An application for inspecting the max wave height for a location on an interactive map.
+This project was written using python 3.10. 
 
 # Data
 The data used in this project is a global wave data set. For simplification purposes, we observe just one day.
@@ -22,7 +23,11 @@ Data variables:
 * swh        (time, latitude, longitude) `float32`
 
 # Running
-
+First, please make sure that you have activated a virtual environment and install the requirements by
+executing
+```
+pip install -r requirements.txt
+```
 To run the application, first run the flask backend server
 ```
 cd backend
