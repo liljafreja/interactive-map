@@ -13,7 +13,7 @@ def find_maximal_wave_height(longitude: float, latitude: float, data: xr.Dataset
         .max() \
         .sel({'longitude': longitude, 'latitude': latitude}, method='nearest') \
         .to_pandas()
-    return df['hmax'].values[0]
+    return round(float(df['hmax'].values[0]), 3)
 
 
 if __name__ == '__main__':
