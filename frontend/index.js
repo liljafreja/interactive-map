@@ -9,8 +9,7 @@ map.on('click', function (e) {
     let lat = popLocation.lat
     let lng = popLocation.lng
     let calculationResult = httpGet(`http://127.0.0.1:5000/max_wave_height?longitude=${lng}&latitude=${lat}`)
-    let parsedMetric = JSON.parse(calculationResult)
-    let message = getMessage(parsedMetric);
+    let message = getMessage(calculationResult);
     L.popup()
         .setLatLng(popLocation)
         .setContent(message)
@@ -18,12 +17,12 @@ map.on('click', function (e) {
 });
 
 
-function getMessage(parsedMetric) {
-    let maxWaveHeight = parsedMetric.maxWaveHeight
-    if (maxWaveHeight === 'nan') {
+function getMessage(calculationResult) {
+    if (calculationResult.status !== 200) {
         return `<p>The max wave height can not be calculated for this point.</p>`
     } else {
-        return `<p>The max wave height is<br />${maxWaveHeight}</p>`
+        let result = JSON.parse(calculationResult.responseText).maxWaveHeight;
+        return `<p>The max wave height is<br/>${result}</p>`
     }
 }
 
@@ -31,5 +30,5 @@ function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", theUrl, false); // false for synchronous request
     xmlHttp.send(null);
-    return xmlHttp.responseText;
+    return xmlHttp;
 }

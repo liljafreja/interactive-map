@@ -1,6 +1,5 @@
 from backend.wave_height_analysis import app
 import json
-import math
 
 
 def test_get_max_wave_height_on_water():
@@ -13,5 +12,4 @@ def test_get_max_wave_height_on_water():
 def test_get_max_wave_height_on_land():
     response = app.test_client().get('/max_wave_height',
                                      query_string={'longitude': -0.09, 'latitude': 51.5})
-    assert response.status_code == 200
-    assert math.isnan(json.loads(response.data.decode('utf-8'))['maxWaveHeight'])
+    assert response.status_code == 404
