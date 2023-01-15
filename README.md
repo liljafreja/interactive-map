@@ -2,20 +2,24 @@
 An application for inspecting the max wave height for a location on an interactive map.
 
 # Data
-KeysView(<xarray.Dataset>
+The data used in this project is a global wave data set. For simplification purposes, we observe just one day.
+The format of the data is [netCDF](https://en.wikipedia.org/wiki/NetCDF), which is comfortably handled by the
+`xarray` python library. For further documentation refer [here](https://docs.xarray.dev/en/stable/user-guide/io.html#netcdf).
+
 
 Dimensions:    (longitude: 720, latitude: 261, time: 24)
 
 Coordinates:
-* longitude  (longitude) float32 -180.0 -179.5 -179.0 ... 178.5 179.0 179.5
-* latitude   (latitude) float32 70.0 69.5 69.0 68.5 ... -59.0 -59.5 -60.0
-* time       (time) datetime64[ns] 2019-01-01 ... 2019-01-01T23:00:00
-* Data variables:
-  - hmax       (time, latitude, longitude) float32 ...
-  - mwd        (time, latitude, longitude) float32 ...
-  - mwp        (time, latitude, longitude) float32 ...
-  - tmax       (time, latitude, longitude) float32 ...
-  - swh        (time, latitude, longitude) float32 ...
+* longitude  `float32 `
+* latitude  `float32`
+* time   `datetime64` [ns]
+
+Data variables:
+* hmax       (time, latitude, longitude) `float32`
+* mwd        (time, latitude, longitude) `float32`
+* mwp        (time, latitude, longitude) `float32`
+* tmax       (time, latitude, longitude) `float32`
+* swh        (time, latitude, longitude) `float32`
 
 # Running
 
