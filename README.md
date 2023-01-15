@@ -22,7 +22,7 @@ Data variables:
 * tmax       (time, latitude, longitude) `float32`
 * swh        (time, latitude, longitude) `float32`
 
-# Testing
+# 🛠️ Testing
 To run all tests, please first make sure that you have activated a virtual environment and install the requirements by
 executing
 
@@ -35,7 +35,7 @@ Afterwards, running all the tests is done using
 ```
 python -m pytest
 ```
-# Running
+# 🚀 Running
 First, please make sure that you have activated a virtual environment and install the requirements by
 executing
 ```
